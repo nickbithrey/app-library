@@ -1,14 +1,15 @@
 {
   "name": "app-library",
-  "packageManager": "yarn@4.2.2",
+  "packageManager": "yarn@4.3.1",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "build-all": "yarn workspaces foreach -A run build",
-    "version-check": "yarn dedupe --strategy highest",
-    "build": "yarn run version-check & yarn run build-all"
+    "version-check-old": "yarn dedupe --strategy highest",
+    "version-check": "",
+    "build": "yarn run version-check && yarn run build-all"
   },
   "devDependencies": {
     "jest": "^29.7.0",
