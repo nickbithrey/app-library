@@ -4,5 +4,14 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "build-all": "yarn workspaces foreach -A run build",
+    "version-check": "yarn dedupe --strategy highest",
+    "build": "yarn run version-check & yarn run build-all"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "typescript": "^5.5.3"
+  }
 }
