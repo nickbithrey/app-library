@@ -1,8 +1,13 @@
 {
   "name": "@app-library/api",
   "packageManager": "yarn@4.2.2",
+  "main": "dist/index",
   "devDependencies": {
     "jest": "^29.7.0",
     "typescript": "^5.5.3"
+  },
+  "scripts": {
+    "build": "yarn run tsc -b",
+    "build:all": "yarn build"
   }
 }

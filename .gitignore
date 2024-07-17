@@ -11,8 +11,14 @@
 
 #!.yarn/cache
 .pnp.*
+node_modules
 
+# build dirs
 build
+dist
 
 # Typescript
 *.tsbuildinfo
+
+# Serverless
+.serverless

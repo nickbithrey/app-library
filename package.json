@@ -11,8 +11,12 @@
     "version-check": "",
     "build": "yarn run version-check && yarn run build-all"
   },
+  "dependenciesMeta": {
+    "serverless@4.1.12": {
+      "unplugged": true
+    }
+  },
   "devDependencies": {
-    "jest": "^29.7.0",
-    "typescript": "^5.5.3"
+    "rimraf": "^6.0.1"
   }
 }

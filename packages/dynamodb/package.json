@@ -1,13 +1,19 @@
 {
   "name": "@app-library/dynamodb",
   "packageManager": "yarn@4.2.2",
+  "main": "dist/index.js",
   "dependencies": {
     "@app-library/api": "workspace:^",
+    "@app-library/spi": "workspace:^",
     "@aws-sdk/client-dynamodb": "^3.609.0",
     "@aws-sdk/lib-dynamodb": "^3.610.0"
   },
   "devDependencies": {
     "jest": "^29.7.0",
     "typescript": "^5.5.3"
+  },
+  "scripts": {
+    "build": "yarn run tsc -b",
+    "build:all": "yarn build"
   }
 }

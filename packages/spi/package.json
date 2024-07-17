@@ -1,14 +1,12 @@
 {
-  "name": "@app-library/core",
+  "name": "@app-library/spi",
   "packageManager": "yarn@4.2.2",
   "main": "dist/index",
   "devDependencies": {
-    "jest": "^29.7.0",
     "typescript": "^5.5.3"
   },
   "dependencies": {
-    "@app-library/api": "workspace:^",
-    "@app-library/spi": "workspace:^"
+    "@app-library/api": "workspace:^"
   },
   "scripts": {
     "build": "yarn run tsc -b",

@@ -1,0 +1,85 @@
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: app-library
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: 'local'
+  environment:
+    DYNAMODB_TABLE: Applications
+
+plugins:
+  - serverless-localstack
+  - serverless-plugin-monorepo
+
+custom:
+  localstack:
+    stages:
+      - local
+    autostart: true
+    docker:
+      sudo: false
+
+functions:
+  register:
+    handler: dist/registration.registerApp
+    events:
+      - http:
+          path: /application
+          method: post
+    role: WriteAppRole
+  getOne:
+    handler: dist/service.getService
+    events:
+      - http:
+          path: /application/{id}
+          method: get
+          request:
+            parameters:
+              paths:
+                id: true
+    role: ReadAppRole
+  getAll:
+    handler: dist/query.getAllServices
+    events:
+      - http:
+          path: /application
+          method: get
+    role: ReadAppRole
+
+resources:
+  Resources:
+    ServiceTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    ReadAppRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: ReadAppRole
+        AssumeRolePolicyDocument:
+          Statement:
+            Effect: Allow
+            Action:
+              - dynamodb:Query
+              - dynamodb:GetItem
+            Resource: "arn:aws:dynamodb:us-east-1:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+    WriteAppRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: WriteAppRole
+        AssumeRolePolicyDocument:
+          Statement:
+            Effect: Allow
+            Action:
+              - dynamodb:PutItem
+            Resource: "arn:aws:dynamodb:us-east-1:*:table/${self:provider.environment.DYNAMODB_TABLE}"
