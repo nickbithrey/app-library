@@ -1,0 +1,20 @@
+{
+  "name": "@app-library/sls-plugin-registration",
+  "packageManager": "yarn@4.2.2",
+  "main": "dist/plugin",
+  "devDependencies": {
+    "@types/serverless": "^3.12.22",
+    "serverless": "^4.1.15",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "serverless": "^4"
+  },
+  "scripts": {
+    "build": "yarn run tsc -b --force",
+    "build:all": "yarn build"
+  },
+  "dependencies": {
+    "@app-library/api": "workspace:^"
+  }
+}
