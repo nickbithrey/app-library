@@ -20,7 +20,6 @@ const putApp = async (app: AppType, storeContext: StoreContext) => {
     return app;
 }
 
-const TABLE_NAME = process.env.DYNAMODB_TABLE;
 const getApp = async (id: string, context: StoreContext) => {
     const result = await docClient.send(new GetCommand({
         TableName: context.tableName,

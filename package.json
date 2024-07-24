@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach -A run build",
-    "deploy": "yarn workspaces foreach -A run deploy"
+    "deploy": "yarn build && yarn workspaces foreach -A run deploy"
   },
   "dependenciesMeta": {
     "serverless@4.1.12": {
