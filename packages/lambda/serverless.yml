@@ -6,7 +6,7 @@ provider:
   runtime: nodejs20.x
   stage: ${opt:stage, 'local'}
   profile: ${opt:profile, 'dev'}
-  region: ${opt:region, 'us-east-1'}
+  region: ${opt:region, 'eu-west-1'}
   environment:
     DYNAMODB_TABLE: Applications
 
@@ -26,9 +26,6 @@ custom:
   localstack:
     stages:
       - local
-    autostart: true
-    docker:
-      sudo: false
 
 functions:
   register:

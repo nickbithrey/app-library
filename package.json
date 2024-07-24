@@ -6,10 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build-all": "yarn workspaces foreach -A run build",
-    "version-check-old": "yarn dedupe --strategy highest",
-    "version-check": "",
-    "build": "yarn run version-check && yarn run build-all"
+    "build": "yarn workspaces foreach -A run build",
+    "deploy": "yarn workspaces foreach -A run deploy"
   },
   "dependenciesMeta": {
     "serverless@4.1.12": {

@@ -11,8 +11,9 @@
     "serverless": "^4"
   },
   "scripts": {
+    "clean": "rimraf ./dist && rimraf -g './**/*.tsbuildinfo'",
     "build": "yarn run tsc -b --force",
-    "build:all": "yarn build"
+    "deploy": ""
   },
   "dependencies": {
     "@app-library/api": "workspace:^"

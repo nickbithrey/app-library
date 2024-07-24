@@ -21,6 +21,7 @@
   "scripts": {
     "build": "yarn run rimraf ./tsconfig.tsbuildinfo && yarn run tsc -b",
     "build:all": "yarn build",
-    "local:start": "yarn build && yarn run serverless deploy --verbose"
+    "local:start": "yarn build && yarn run serverless deploy --verbose",
+    "deploy": "yarn run sls deploy --stage prod"
   }
 }
