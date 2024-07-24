@@ -4,7 +4,7 @@
     "rootDir": "./src",
     "outDir": "./dist",
   },
-  "include": ["src/**/*", "../api/src/AppLibraryContext.ts"],
+  "include": ["src/**/*"],
   "references": [{
     "path": "../api"
   }]

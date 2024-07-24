@@ -3,6 +3,7 @@
   "packageManager": "yarn@4.2.2",
   "main": "dist/index.js",
   "devDependencies": {
+    "@app-library/sls-plugin-registration": "workspace:^",
     "@types/aws-lambda": "^8.10.141",
     "@types/node": "^20.14.11",
     "jest": "^29.7.0",

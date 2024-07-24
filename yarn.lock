@@ -100,6 +100,7 @@ __metadata:
   dependencies:
     "@app-library/core": "workspace:^"
     "@app-library/dynamodb": "workspace:^"
+    "@app-library/sls-plugin-registration": "workspace:^"
     "@types/aws-lambda": "npm:^8.10.141"
     "@types/node": "npm:^20.14.11"
     aws-lambda: "npm:^1.0.7"
@@ -109,6 +110,19 @@ __metadata:
     serverless-localstack: "npm:^1.2.1"
     serverless-plugin-monorepo: "npm:^0.11.0"
     typescript: "npm:^5.5.3"
+  languageName: unknown
+  linkType: soft
+
+"@app-library/sls-plugin-registration@workspace:^, @app-library/sls-plugin-registration@workspace:packages/sls-plugin":
+  version: 0.0.0-use.local
+  resolution: "@app-library/sls-plugin-registration@workspace:packages/sls-plugin"
+  dependencies:
+    "@app-library/api": "workspace:^"
+    "@types/serverless": "npm:^3.12.22"
+    serverless: "npm:^4.1.15"
+    typescript: "npm:^5.5.3"
+  peerDependencies:
+    serverless: ^4
   languageName: unknown
   linkType: soft
 
@@ -4411,6 +4425,13 @@ __metadata:
     "@types/node": "npm:*"
     "@types/send": "npm:*"
   checksum: 10c0/26ec864d3a626ea627f8b09c122b623499d2221bbf2f470127f4c9ebfe92bd8a6bb5157001372d4c4bd0dd37a1691620217d9dc4df5aa8f779f3fd996b1c60ae
+  languageName: node
+  linkType: hard
+
+"@types/serverless@npm:^3.12.22":
+  version: 3.12.22
+  resolution: "@types/serverless@npm:3.12.22"
+  checksum: 10c0/74c25926374d8dd6433bceb9202a2961a1f027f4188ed9425cfe079087636f2c059cef4e35b52b0a15efa26a922559bd66f65761c1dbdc952ab3f192a50b0d1c
   languageName: node
   linkType: hard
 
@@ -13939,6 +13960,20 @@ __metadata:
     serverless: run.js
     sls: run.js
   checksum: 10c0/3e28b9cae42d14b2fa61e589d552647d969642323d95702cfce0253176379cdba9a93d1357ae0af55bc46ca89dc2dd79155bd54a25e2124d2551914c0a3d1005
+  languageName: node
+  linkType: hard
+
+"serverless@npm:^4.1.15":
+  version: 4.1.15
+  resolution: "serverless@npm:4.1.15"
+  dependencies:
+    axios: "npm:^1.6.0"
+    axios-proxy-builder: "npm:^0.1.2"
+    rimraf: "npm:^5.0.5"
+  bin:
+    serverless: run.js
+    sls: run.js
+  checksum: 10c0/93d51e4e8a43a148b0a7e4b0f681f129151e05dfeed0f8462ab0dea8f1a514b6d0ebaf4a53591c9b70131ae981c114faf3745d6c12d069a7d0d0de6e5fa7c9c2
   languageName: node
   linkType: hard
 

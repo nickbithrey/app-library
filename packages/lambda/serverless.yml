@@ -4,15 +4,25 @@ service: app-library
 provider:
   name: aws
   runtime: nodejs20.x
-  stage: 'local'
+  stage: ${opt:stage, 'local'}
+  profile: ${opt:profile, 'dev'}
+  region: ${opt:region, 'us-east-1'}
   environment:
     DYNAMODB_TABLE: Applications
 
 plugins:
   - serverless-localstack
   - serverless-plugin-monorepo
+  - "@app-library/sls-plugin-registration"
 
 custom:
+  registration:
+    url: !Ref HttpApiURL
+    app: 
+      id: 'app-library'
+      name: Application Library
+      type: function
+      uri: !Ref HttpApiURL
   localstack:
     stages:
       - local
@@ -24,14 +34,14 @@ functions:
   register:
     handler: dist/registration.registerApp
     events:
-      - http:
+      - httpApi:
           path: /application
           method: post
     role: WriteAppRole
   getOne:
     handler: dist/service.getService
     events:
-      - http:
+      - httpApi:
           path: /application/{id}
           method: get
           request:
@@ -42,7 +52,7 @@ functions:
   getAll:
     handler: dist/query.getAllServices
     events:
-      - http:
+      - httpApi:
           path: /application
           method: get
     role: ReadAppRole
